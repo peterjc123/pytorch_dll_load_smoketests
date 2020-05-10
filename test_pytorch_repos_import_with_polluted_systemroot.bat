@@ -1,7 +1,7 @@
 @echo on
 
 if not exist polluted_dlls.7z (
-    curl --retry 3 "https://www.dropbox.com/s/c68hj6ad2rmugzf/polluted_dlls.7z?dl=1" --output polluted_dlls.7z
+    curl --retry 3 -kL "https://www.dropbox.com/s/c68hj6ad2rmugzf/polluted_dlls.7z?dl=1" --output polluted_dlls.7z
     if errorlevel 1 exit /b 1
 )
 
