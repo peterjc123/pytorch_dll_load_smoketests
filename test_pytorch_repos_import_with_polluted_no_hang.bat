@@ -25,3 +25,6 @@ if errorlevel 1 exit /b 1
 
 xcopy /y /q backup_libs\*.* "%PYTHON_ROOT%\Lib\site-packages\torch\lib\*.*"
 if errorlevel 1 exit /b 1
+
+rmdir /S /Q backup_libs
+if errorlevel 1 exit /b 1
