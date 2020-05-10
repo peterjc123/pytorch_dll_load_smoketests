@@ -16,6 +16,7 @@ if errorlevel 1 exit /b 1
 
 set "PATH=%CD%\Python%PYTHON_VERSION%\Scripts;%CD%\Python%PYTHON_VERSION%;%PATH%"
 echo "List of python.exe in PATH"
-where /q python.exe
+where python.exe
+
 echo "List of pip.exe in PATH"
-where /q pip.exe
+where pip.exe
