@@ -61,13 +61,13 @@ workflows:
     jobs:
       - win_conda_conda_test:
           name: win_conda_conda_py3_6_cpu_test
-          cuda_version: "cpu"
+          cuda_version: "10.2"
           python_version: "3.6"
       - win_conda_pip_test:
           name: win_conda_pip_py3_6_cpu_test
-          cuda_version: "cpu"
+          cuda_version: "10.2"
           python_version: "3.6"
       - win_python_pip_test:
           name: win_python_pip_py3_6_cpu_test
-          cuda_version: "cpu"
+          cuda_version: "10.2"
           python_version: "3.6"
