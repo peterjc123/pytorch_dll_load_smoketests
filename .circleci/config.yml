@@ -1,0 +1,97 @@
+version: 2.1
+
+orbs:
+  win: circleci/windows@2.3.0
+
+test_params: &test_params
+  parameters:
+    python_version:
+      type: string
+      default: ""
+    cuda_version:
+      type: string
+      default: ""
+  environment:
+    PYTHON_VERSION: << parameters.python_version >>
+    CUDA_VERSION: << parameters.cuda_version >>
+
+jobs:
+  win_conda_conda_test:
+    <<: *test_params
+    executor:
+      name: win/default
+      size: "medium"
+      shell: cmd.exe
+    steps:
+      - checkout
+      - run:
+          name: "Test import"
+          command: |
+            call win_conda_conda_test.bat
+            if errorlevel 1 exit /b 1
+  win_conda_pip_test:
+    <<: *test_params
+    executor:
+      name: win/default
+      size: "medium"
+      shell: cmd.exe
+    steps:
+      - checkout
+      - run:
+          name: "Test import"
+          command: |
+            call win_conda_pip_test.bat
+            if errorlevel 1 exit /b 1
+  win_python_pip_test:
+    <<: *test_params
+    executor:
+      name: win/default
+      size: "medium"
+      shell: cmd.exe
+    steps:
+      - checkout
+      - run:
+          name: "Test import"
+          command: |
+            call win_python_pip_test.bat
+            if errorlevel 1 exit /b 1
+
+workflows:
+  build:
+    jobs:
+      - win_conda_conda_test:
+          name: win_conda_conda_py3_6_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.6"
+      - win_conda_pip_test:
+          name: win_conda_pip_py3_6_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.6"
+      - win_python_pip_test:
+          name: win_python_pip_py3_6_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.6"
+      - win_conda_conda_test:
+          name: win_conda_conda_py3_7_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.7"
+      - win_conda_pip_test:
+          name: win_conda_pip_py3_7_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.7"
+      - win_python_pip_test:
+          name: win_python_pip_py3_7_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.7"
+      - win_conda_conda_test:
+          name: win_conda_conda_py3_8_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.8"
+      - win_conda_pip_test:
+          name: win_conda_pip_py3_8_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.8"
+      - win_python_pip_test:
+          name: win_python_pip_py3_8_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.8"
