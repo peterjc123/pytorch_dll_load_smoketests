@@ -3,12 +3,12 @@
 where python.exe
 if errorlevel 1 exit /b 1
 
-for /f "usebackq tokens=*" %%i in (`python.exe -c "import sys; print(sys.prefix)"`) do (
-    set "PYTHON_ROOT=%%i"
+for /f "usebackq tokens=*" %%i in (`python.exe -c "import os, importlib; import importlib.util; print(os.path.dirname(importlib.util.find_spec('torch').origin))"`) do (
+    set "PYTORCH_ROOT=%%i"
 )
 
 mkdir deps
-move /Y %PYTHON_ROOT%\Lib\site-packages\torch\lib\cudnn*.dll deps\
+move /Y %PYTORCH_ROOT%\lib\cudnn*.dll deps\
 if errorlevel 1 exit /b 1
 
 @setlocal
@@ -19,7 +19,7 @@ if errorlevel 1 exit /b 1
 
 @endlocal
 
-move /Y deps\* %PYTHON_ROOT%\Lib\site-packages\torch\lib\
+move /Y deps\* %PYTORCH_ROOT%\lib\
 if errorlevel 1 exit /b 1
 
 rmdir /S /Q deps

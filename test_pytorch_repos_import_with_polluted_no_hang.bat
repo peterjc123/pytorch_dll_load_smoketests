@@ -5,25 +5,25 @@ if not exist polluted_dlls.7z (
     if errorlevel 1 exit /b 1
 )
 
-for /f "usebackq tokens=*" %%i in (`python.exe -c "import sys; print(sys.prefix)"`) do (
-    set "PYTHON_ROOT=%%i"
+for /f "usebackq tokens=*" %%i in (`python.exe -c "import os, importlib; import importlib.util; print(os.path.dirname(importlib.util.find_spec('torch').origin))"`) do (
+    set "PYTORCH_ROOT=%%i"
 )
 
 mkdir backup_libs
-xcopy /y /q "%PYTHON_ROOT%\Lib\site-packages\torch\lib\*.*" backup_libs\*.*
+xcopy /y /q "%PYTORCH_ROOT%\lib\*.*" backup_libs\*.*
 
-7z x -aoa polluted_dlls.7z -o"%PYTHON_ROOT%\Lib\site-packages\torch\lib"
+7z x -aoa polluted_dlls.7z -o"%PYTORCH_ROOT%\lib"
 if errorlevel 1 exit /b 1
 
 call test_pytorch_repos_import.bat || ver > NUL
 
-rmdir /S /Q "%PYTHON_ROOT%\Lib\site-packages\torch\lib"
+rmdir /S /Q "%PYTORCH_ROOT%\lib"
 if errorlevel 1 exit /b 1
 
-mkdir "%PYTHON_ROOT%\Lib\site-packages\torch\lib"
+mkdir "%PYTORCH_ROOT%\lib"
 if errorlevel 1 exit /b 1
 
-xcopy /y /q backup_libs\*.* "%PYTHON_ROOT%\Lib\site-packages\torch\lib\*.*"
+xcopy /y /q backup_libs\*.* "%PYTORCH_ROOT%\lib\*.*"
 if errorlevel 1 exit /b 1
 
 rmdir /S /Q backup_libs

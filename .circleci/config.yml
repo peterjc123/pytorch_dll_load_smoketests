@@ -55,6 +55,19 @@ jobs:
           command: |
             call win_python_pip_test.bat
             if errorlevel 1 exit /b 1
+  win_store_python_pip_test:
+    <<: *test_params
+    executor:
+      name: win/default
+      size: "medium"
+      shell: cmd.exe
+    steps:
+      - checkout
+      - run:
+          name: "Test import"
+          command: |
+            call win_store_python_pip_test.bat
+            if errorlevel 1 exit /b 1
 
 workflows:
   build:
@@ -83,6 +96,10 @@ workflows:
           name: win_python_pip_py3_7_cu102_test
           cuda_version: "10.2"
           python_version: "3.7"
+      - win_store_python_pip_test:
+          name: win_store_python_pip_py3_7_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.7"
       - win_conda_conda_test:
           name: win_conda_conda_py3_8_cu102_test
           cuda_version: "10.2"
@@ -93,5 +110,9 @@ workflows:
           python_version: "3.8"
       - win_python_pip_test:
           name: win_python_pip_py3_8_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.8"
+      - win_store_python_pip_test:
+          name: win_store_python_pip_py3_8_cu102_test
           cuda_version: "10.2"
           python_version: "3.8"
