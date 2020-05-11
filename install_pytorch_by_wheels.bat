@@ -6,5 +6,11 @@ if "%CUDA_VERSION%" == "cpu" (
     set CUVER=cu%CUDA_VERSION:.=%
 )
 
-pip install --pre torch torchvision -f https://download.pytorch.org/whl/nightly/%CUVER%/torch_nightly.html
+if "%USE_MODULE_PIP%" == "1" (
+    set PIP_COMMAND=python -m pip
+) else (
+    set PIP_COMMAND=pip
+)
+
+%PIP_COMMAND% install --pre torch torchvision -f https://download.pytorch.org/whl/nightly/%CUVER%/torch_nightly.html
 if errorlevel 1 exit /b 1

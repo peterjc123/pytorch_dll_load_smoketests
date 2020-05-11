@@ -10,10 +10,12 @@ if "%PYTHON_INSTALLER_URL%" == "" (
 curl --retry 3 -kL "%PYTHON_INSTALLER_URL%" --output python-amd64.msix
 if errorlevel 1 exit /b 1
 
-powershell -Command Add-AppxPackage .\python-amd64.msix
+7z x python-amd64.msix -ostore_python
 if errorlevel 1 exit /b 1
 
-set "PATH=%LOCALAPPDATA%\Microsoft\WindowsApps;%PATH%"
+set "PATH=%CD%\store_python;%PATH%"
+:: Has to use `python -m pip install` instead of `pip install`
+set USE_MODULE_PIP=1
 echo "List of python.exe in PATH"
 where python.exe
 
