@@ -3,9 +3,9 @@
 where python.exe
 if errorlevel 1 exit /b 1
 
-for /f "usebackq tokens=*" %%i in (`python.exe -c "import sys; print(sys.prefix)"`) do (
-    set "PYTHON_ROOT=%%i"
+for /f "usebackq tokens=*" %%i in (`python.exe -c "import os, importlib; print(os.path.dirname(importlib.machinery.PathFinder().find_spec('torch').origin))"`) do (
+    set "PYTORCH_ROOT=%%i"
 )
 
-curl --retry 3 -kL "https://raw.githubusercontent.com/peterjc123/pytorch/windows_dll_fix/torch/__init__.py" --output "%PYTHON_ROOT%\Lib\site-packages\torch\__init__.py"
+curl --retry 3 -kL "https://raw.githubusercontent.com/peterjc123/pytorch/windows_dll_fix/torch/__init__.py" --output "%PYTORCH_ROOT%\__init__.py"
 if errorlevel 1 exit /b 1
