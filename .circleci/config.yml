@@ -72,46 +72,46 @@ jobs:
 workflows:
   build:
     jobs:
-      # - win_conda_conda_test:
-      #     name: win_conda_conda_py3_6_cu102_test
-      #     cuda_version: "10.2"
-      #     python_version: "3.6"
-      # - win_conda_pip_test:
-      #     name: win_conda_pip_py3_6_cu102_test
-      #     cuda_version: "10.2"
-      #     python_version: "3.6"
-      # - win_python_pip_test:
-      #     name: win_python_pip_py3_6_cu102_test
-      #     cuda_version: "10.2"
-      #     python_version: "3.6"
-      # - win_conda_conda_test:
-      #     name: win_conda_conda_py3_7_cu102_test
-      #     cuda_version: "10.2"
-      #     python_version: "3.7"
-      # - win_conda_pip_test:
-      #     name: win_conda_pip_py3_7_cu102_test
-      #     cuda_version: "10.2"
-      #     python_version: "3.7"
-      # - win_python_pip_test:
-      #     name: win_python_pip_py3_7_cu102_test
-      #     cuda_version: "10.2"
-      #     python_version: "3.7"
+      - win_conda_conda_test:
+          name: win_conda_conda_py3_6_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.6"
+      - win_conda_pip_test:
+          name: win_conda_pip_py3_6_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.6"
+      - win_python_pip_test:
+          name: win_python_pip_py3_6_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.6"
+      - win_conda_conda_test:
+          name: win_conda_conda_py3_7_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.7"
+      - win_conda_pip_test:
+          name: win_conda_pip_py3_7_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.7"
+      - win_python_pip_test:
+          name: win_python_pip_py3_7_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.7"
       - win_store_python_pip_test:
           name: win_store_python_pip_py3_7_cu102_test
           cuda_version: "10.2"
           python_version: "3.7"
-      # - win_conda_conda_test:
-      #     name: win_conda_conda_py3_8_cu102_test
-      #     cuda_version: "10.2"
-      #     python_version: "3.8"
-      # - win_conda_pip_test:
-      #     name: win_conda_pip_py3_8_cu102_test
-      #     cuda_version: "10.2"
-      #     python_version: "3.8"
-      # - win_python_pip_test:
-      #     name: win_python_pip_py3_8_cu102_test
-      #     cuda_version: "10.2"
-      #     python_version: "3.8"
+      - win_conda_conda_test:
+          name: win_conda_conda_py3_8_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.8"
+      - win_conda_pip_test:
+          name: win_conda_pip_py3_8_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.8"
+      - win_python_pip_test:
+          name: win_python_pip_py3_8_cu102_test
+          cuda_version: "10.2"
+          python_version: "3.8"
       - win_store_python_pip_test:
           name: win_store_python_pip_py3_8_cu102_test
           cuda_version: "10.2"
