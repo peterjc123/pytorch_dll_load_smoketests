@@ -9,8 +9,8 @@ if errorlevel 1 exit /b 1
 call %CD%\conda\condabin\activate.bat base
 if errorlevel 1 exit /b 1
 
-call conda create -n test python=%PYTHON_VERSION% -y
+conda create -n test python=%PYTHON_VERSION% -y
 if errorlevel 1 exit /b 1
 
-call conda activate test
+conda activate test
 if errorlevel 1 exit /b 1
