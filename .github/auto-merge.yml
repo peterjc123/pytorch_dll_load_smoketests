@@ -3,7 +3,6 @@
 updateBranch: true
 deleteBranchAfterMerge: true
 reportStatus: true
-mergeMethod: squash
 
 minApprovals:
   COLLABORATOR: 0
