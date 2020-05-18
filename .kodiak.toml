@@ -1,6 +1,6 @@
 # .kodiak.toml
 version = 1
-merge.automerge_label = "squash"
+merge.automerge_label = "merge"
 merge.blacklist_labels = ["block"]
 merge.delete_branch_on_merge = true
 approve.auto_approve_usernames = ["peterjc123"]
