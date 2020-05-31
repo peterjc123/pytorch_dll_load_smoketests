@@ -14,9 +14,10 @@ There're so many DLL import failures about PyTorch on Windows. As a release buil
 2. Conda (for conda only)
 
 ## Tested repos
-1. pytorch/pytorch
-2. pytorch/vision
-3. pytorch/audio
+1. [pytorch/pytorch](https://github.com/pytorch/pytorch)
+2. [pytorch/vision](https://github.com/pytorch/vision)
+3. [pytorch/audio](https://github.com/pytorch/audio)
+4. [pytorch/text](https://github.com/pytorch/text)
 
 ## Test cases
 1. Normal import
