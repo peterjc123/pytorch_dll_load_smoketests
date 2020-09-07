@@ -3,8 +3,18 @@
 call installation_helpers\install_conda.bat
 if errorlevel 1 exit /b 1
 
+if "%USE_VIRTUALENV%" == "1" if "%VIRTUALENV_MODE%" == "user" (
+    call installation_helpers\install_virtualenv_user.bat
+    if errorlevel 1 exit /b 1
+)
+
 call installation_helpers\install_pytorch_by_wheels.bat
 if errorlevel 1 exit /b 1
+
+if "%USE_VIRTUALENV%" == "1" if "%VIRTUALENV_MODE%" == "system" (
+    call installation_helpers\install_virtualenv_system.bat
+    if errorlevel 1 exit /b 1
+)
 
 cd testcases
 
